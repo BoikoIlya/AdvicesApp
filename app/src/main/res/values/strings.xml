@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AdvicesApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_connection_message">No internet connection</string>
+    <string name="service_is_unavailable">Service is unavailable</string>
+    <string name="no_element">"No advice slips found matching that search term"</string>
+    <string name="enter_programing_language_name">Enter word for advice</string>
+    <string name="find">Find advice</string>
+    <string name="random_advice">Random advice</string>
+    <string name="notification_title">New Advice</string>
+    <string name="notification_content">Check new random advice</string>
+</resources>
