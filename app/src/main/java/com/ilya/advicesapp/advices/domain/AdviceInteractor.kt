@@ -32,16 +32,10 @@ interface AdviceInteractor {
 
         override suspend fun randomAdvice() = handleRequest.handle { repository.randomAdvice() }
 
-        override suspend fun init(): Flow<AdviceResult> = flow{
-            emit(AdviceResult.Loading)
-            emit(AdviceResult.Success(repository.allAdvices().first()))
-        }
-
+        override suspend fun init(): Flow<AdviceResult> = handleRequest.handle{}
 
         override suspend fun findAdvices(name: String): Flow<AdviceResult>
-        = handleRequest.handle {
-            repository.findAdvices(name)
-        }
+        = handleRequest.handle { repository.findAdvices(name) }
 
     }
 }
