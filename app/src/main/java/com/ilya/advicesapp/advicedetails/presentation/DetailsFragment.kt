@@ -32,9 +32,13 @@ class DetailsFragment :
 
         val details = viewModel.read()
 
-        val mapper = AdvicesUi.Mapper.Details(binding)
+        if(binding!=null){
+            AdvicesUi.Mapper.Details(binding!!).run {
+                details.map(this)
+            }
+        }
 
-        details.map(mapper)
+
 
     }
 

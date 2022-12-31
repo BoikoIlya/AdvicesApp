@@ -19,7 +19,7 @@ abstract class BaseFragment<T: ViewBinding, S:Any>(
     private val bindingInflater: (layoutInflater:LayoutInflater) -> T,
 ): Fragment() {
 
-    protected lateinit var binding: T
+    protected var binding: T? = null
     protected lateinit var viewModel: S
 
     protected abstract fun provideViewModel()
@@ -35,7 +35,12 @@ abstract class BaseFragment<T: ViewBinding, S:Any>(
         savedInstanceState: Bundle?
     ): View? {
         binding = bindingInflater.invoke(inflater)
-        return binding.root
+        return binding?.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }
 

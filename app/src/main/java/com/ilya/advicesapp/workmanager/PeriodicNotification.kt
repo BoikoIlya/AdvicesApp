@@ -34,7 +34,7 @@ class PeriodicNotification(
         override suspend fun doWork(): Result {
             val notificationManager = NotificationManagerCompat.from(context)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                NotificationChannel(
+               channel = NotificationChannel(
                     channelId,
                     channelName,
                     NotificationManager.IMPORTANCE_HIGH

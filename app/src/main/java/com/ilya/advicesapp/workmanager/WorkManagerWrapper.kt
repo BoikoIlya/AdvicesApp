@@ -1,20 +1,9 @@
 package com.ilya.advicesapp.workmanager
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
-import android.content.Intent
-import android.os.Build
-import androidx.annotation.RequiresApi
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.work.*
-import com.ilya.advicesapp.R
-import com.ilya.advicesapp.main.presentation.MainActivity
 import java.util.*
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 
 /**
  * Created by HP on 23.12.2022.
@@ -32,17 +21,17 @@ interface WorkManagerWrapper {
         }
 
         override fun start() {
-            val calendar = Calendar.getInstance()
-            val timeNow = calendar.timeInMillis
-            calendar.apply {
+            val targetTime = Calendar.getInstance()
+            val timeNow = Calendar.getInstance()
+            targetTime.apply {
                 set(Calendar.HOUR_OF_DAY, 9)
                 set(Calendar.MINUTE, 30)
                 set(Calendar.SECOND, 0)
             }
-            if(calendar[Calendar.HOUR_OF_DAY]>9 && calendar[Calendar.MINUTE]>30)
-                calendar.add(Calendar.DAY_OF_MONTH,1)
+            if(timeNow.after(targetTime))
+                targetTime.add(Calendar.DAY_OF_MONTH,1)
 
-            val delay = calendar.timeInMillis - timeNow
+            val delay = targetTime.timeInMillis - timeNow.timeInMillis
 
                 val request = PeriodicWorkRequestBuilder<PeriodicNotification>(
                     24,

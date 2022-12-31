@@ -1,6 +1,6 @@
 package com.ilya.advicesapp.advices.presentation
 
-import android.content.Context
+
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
@@ -38,7 +38,7 @@ class AdviceFragment:
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView = binding.rcv
+        recyclerView = binding!!.rcv
         recyclerView.layoutManager = LinearLayoutManager(context)
         adapter = AdviceAdapter(object : ClickListener{
             override fun click(item: AdvicesUi) {
@@ -49,12 +49,12 @@ class AdviceFragment:
 
         lifecycleScope.launch {
             viewModel.collectProgress(this@AdviceFragment) {
-                    binding.progress.visibility = it
+                    binding!!.progress.visibility = it
             }
         }
         lifecycleScope.launch {
             viewModel.collectState(this@AdviceFragment){
-                it.apply(binding.edTextLayout, binding.edText)
+                it.apply(binding!!.edTextLayout, binding!!.edText)
             }
         }
 
@@ -65,12 +65,12 @@ class AdviceFragment:
             }
         }
 
-        binding.btnFind.setOnClickListener {
+        binding!!.btnFind.setOnClickListener {
             EspressoIdlingResource.increment()
-            viewModel.findAdvices(binding.edText.text.toString())
+            viewModel.findAdvices(binding!!.edText.text.toString())
         }
 
-        binding.btnRandom.setOnClickListener {
+        binding!!.btnRandom.setOnClickListener {
             EspressoIdlingResource.increment()
             viewModel.randomAdvice()
         }
