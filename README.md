@@ -10,7 +10,7 @@ Stack:
 - Dagger 2
 - Corutines
 - State and shared flow
-- WorkManager
+- AlarmManager
 
 This app has 2 fragments. First one show you text field where you can type simple word and then after pressing find button get advice. Also you can press random advice button and get random advice. Below you can see recyclerView with advice items that contains title and date when you get advice. After clicking on recyclerView item you will navigate to second fragment and see title and advice. If you try to find advice that you have in database, this item will take 0 position in recyclerView.
 
