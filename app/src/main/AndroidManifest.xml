@@ -4,6 +4,7 @@
     package="com.ilya.advicesapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
 
     <application
         android:name="com.ilya.advicesapp.app.App"
@@ -28,6 +29,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".dailynotification.NotificationAlarmReceiver" />
+
+        <receiver android:name=".dailynotification.BootUpReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

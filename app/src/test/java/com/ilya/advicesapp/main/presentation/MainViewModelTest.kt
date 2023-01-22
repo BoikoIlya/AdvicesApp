@@ -1,7 +1,6 @@
 package com.ilya.advicesapp.main.presentation
 
 import com.ilya.advicesapp.workmanager.WorkManagerWrapper
-import com.ilya.advicesapp.workmanager.di.WorkManagerModule
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

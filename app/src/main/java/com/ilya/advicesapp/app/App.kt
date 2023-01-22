@@ -2,7 +2,7 @@ package com.ilya.advicesapp.app
 
 import android.app.Application
 import com.ilya.advicesapp.advices.di.AdvicesModule
-import com.ilya.advicesapp.workmanager.di.WorkManagerModule
+import com.ilya.advicesapp.dailynotification.di.AlarmManagerModule
 
 /**
  * Created by HP on 06.12.2022.
@@ -17,7 +17,7 @@ class App: Application() {
 
         appComponent = DaggerAppComponent.builder()
             .advicesModule(AdvicesModule(this))
-            .workManagerModule(WorkManagerModule(this))
+            .alarmManagerModule(AlarmManagerModule(this))
             .build()
     }
 }
